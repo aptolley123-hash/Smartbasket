@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#174b2a">
+<title>SmartBasket — Find the smarter shop</title>
+<style>
+:root{--g:#174b2a;--g2:#e4f1e8;--ink:#152019;--muted:#66736b;--bg:#f6f7f3;--card:#fff;--line:#dfe4df;--gold:#b78118;--red:#a43d3d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{max-width:1180px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;padding:10px 0 20px}
+.logo{display:flex;gap:12px;align-items:center}.mark{background:var(--g);color:#fff;border-radius:14px;padding:11px;font-size:22px}.logo h1{margin:0;font:700 28px Georgia}.logo small{color:var(--muted)}
+button{cursor:pointer;border:0;font-weight:800}.nav button{background:transparent;padding:10px 14px;border-radius:10px;color:var(--muted)}.nav .on{background:var(--g2);color:var(--g)}
+.hero{background:linear-gradient(135deg,#173f25,#2e7043);color:#fff;border-radius:28px;padding:35px;margin-bottom:20px}.hero h2{font:700 44px Georgia;margin:0 0 8px}.hero p{max-width:700px;line-height:1.6;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 5px 20px #00000006}
+textarea{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;padding:15px;font-size:16px;resize:vertical}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}.controls input,.controls select{padding:12px;border:1px solid var(--line);border-radius:10px}
+.primary{background:var(--g);color:white;padding:13px 18px;border-radius:12px}.soft{background:var(--g2);color:var(--g);padding:12px 15px;border-radius:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}.kpi small{color:var(--muted)}.kpi strong{display:block;font:700 27px Georgia;margin-top:5px}
+.result{margin-top:18px}.winner{background:var(--g);color:#fff;border-radius:22px;padding:24px}.winner .big{font:700 48px Georgia}.winner .save{font-size:20px;margin-top:4px}
+.row{display:flex;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.muted{color:var(--muted);font-size:13px}.price{font-weight:900;white-space:nowrap}
+.storegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.store{border:1px solid var(--line);border-radius:16px;padding:14px}.store.best{border:2px solid var(--g)}.store h4{margin:0}.store b{font:700 25px Georgia;display:block;margin-top:6px}
+.badge{display:inline-block;background:var(--g2);color:var(--g);padding:4px 8px;border-radius:99px;font-size:12px;font-weight:800}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line)}th{font-size:12px;color:var(--muted);text-transform:uppercase}
+.hidden{display:none}.note{padding:12px;background:#fff7df;border:1px solid #ead9a4;border-radius:12px;color:#72520d;font-size:13px;margin-top:12px}
+@media(max-width:800px){.grid,.kpis,.storegrid{grid-template-columns:1fr}.hero h2{font-size:35px}.top{align-items:flex-start;gap:10px}.nav{display:flex}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="logo"><div class="mark">🛒</div><div><h1>SmartBasket</h1><small>Find the smarter way to shop.</small></div></div><div class="nav"><button class="on" onclick="tab('shop',this)">Shop</button><button onclick="tab('compare',this)">Compare</button><button onclick="tab('data',this)">Data</button></div></header>
+
+<section id="shop">
+<div class="hero"><h2>Pay less for your weekly shop.</h2><p>Paste your shopping list. SmartBasket compares products, loyalty prices, pack sizes and supermarkets, then finds the cheapest practical basket — not just the cheapest supermarket.</p></div>
+<div class="grid">
+<div class="card"><h3>Your shopping list</h3><textarea id="list" placeholder="Chicken breast x1&#10;Eggs x1&#10;Greek yoghurt x1&#10;Rice x1&#10;Bananas x1&#10;Milk x1&#10;Bread x1"></textarea>
+<div class="controls"><label>Budget £ <input id="budget" type="number" value="80"></label><label>Max stores <select id="maxstores"><option>1</option><option selected>2</option><option>3</option></select></label></div>
+<div class="controls"><button class="primary" onclick="analyse()">Find my best basket →</button><button class="soft" onclick="demo()">Load demo shop</button></div>
+<div class="note">Trial mode: the included prices are clearly labelled prototype data. No price is presented as live.</div></div>
+<div class="card"><h3>SmartBasket rules</h3>
+<div class="row"><div><b>Exact match</b><div class="muted">Prefer the requested product/brand.</div></div><span class="badge">HIGH</span></div>
+<div class="row"><div><b>Equivalent match</b><div class="muted">Find acceptable own-brand alternatives.</div></div><span class="badge">SMART</span></div>
+<div class="row"><div><b>Unit pricing</b><div class="muted">Normalise pack sizes before comparing.</div></div><span class="badge">£/UNIT</span></div>
+<div class="row"><div><b>Practicality</b><div class="muted">More stores are only useful when savings justify them.</div></div><span class="badge">REAL LIFE</span></div>
+</div></div>
+<div id="results" class="result hidden"></div></section>
+
+<section id="compare" class="hidden"><div class="hero"><h2>Basket comparison</h2><p>See the cheapest one-store and multi-store options side by side.</p></div><div id="compareContent" class="card">Run a basket analysis first.</div></section>
+
+<section id="data" class="hidden"><div class="hero"><h2>Transparent product data</h2><p>Every comparison should show the product, pack size, unit price, store and freshness of the source.</p></div><div class="card"><table><thead><tr><th>Product</th><th>Store</th><th>Pack</th><th>Price</th><th>Unit</th><th>Checked</th><th>Source</th></tr></thead><tbody id="tbody"></tbody></table></div></section>
+</div>
+<script>
+const P=[
+['Chicken breast','Tesco','British Chicken Breast','1kg',8.50,7.50,'kg'],['Chicken breast','Sainsbury’s','Chicken Breast Fillets','1kg',9.00,8.00,'kg'],['Chicken breast','Aldi','Ashfield Chicken Breast','1kg',7.99,null,'kg'],['Chicken breast','Lidl','Chicken Breast','1kg',7.99,null,'kg'],
+['Eggs','Tesco','Free Range Eggs','12 pack',3.20,2.80,'12'],['Eggs','Sainsbury’s','Free Range Eggs','12 pack',3.30,2.90,'12'],['Eggs','Aldi','British Free Range Eggs','12 pack',2.49,null,'12'],['Eggs','Lidl','Free Range Eggs','12 pack',2.49,null,'12'],
+['Greek yoghurt','Tesco','Greek Style Yoghurt','500g',1.80,null,'kg'],['Greek yoghurt','Sainsbury’s','Greek Style Yoghurt','500g',1.85,null,'kg'],['Greek yoghurt','Aldi','Greek Style Yoghurt','500g',1.49,null,'kg'],
+['Rice','Tesco','Easy Cook Long Grain Rice','1kg',1.80,null,'kg'],['Rice','Sainsbury’s','Long Grain Rice','1kg',1.85,null,'kg'],['Rice','Aldi','Long Grain Rice','1kg',1.55,null,'kg'],['Rice','Lidl','Long Grain Rice','1kg',1.49,null,'kg'],
+['Bananas','Tesco','Bananas','1kg',1.20,null,'kg'],['Bananas','Sainsbury’s','Bananas','1kg',1.20,null,'kg'],['Bananas','Aldi','Bananas','1kg',1.05,null,'kg'],['Bananas','Lidl','Bananas','1kg',1.05,null,'kg'],
+['Milk','Tesco','Whole Milk','2L',1.65,null,'L'],['Milk','Sainsbury’s','Whole Milk','2L',1.65,null,'L'],['Milk','Aldi','Whole Milk','2L',1.55,null,'L'],['Milk','Lidl','Whole Milk','2L',1.55,null,'L'],
+['Bread','Tesco','White Bread','800g',1.45,null,'kg'],['Bread','Aldi','White Bread','800g',1.09,null,'kg'],['Bread','Lidl','White Bread','800g',1.09,null,'kg']
+];
+const aliases={'chicken':'chicken breast','chicken breasts':'chicken breast','yogurt':'greek yoghurt','greek yogurt':'greek yoghurt','rice':'rice','eggs':'eggs','egg':'eggs','banana':'bananas','bananas':'bananas','milk':'milk','bread':'bread'};
+let last=null;
+function norm(s){s=s.toLowerCase().trim();s=s.replace(/x\\s*\\d+$/,'').trim();return aliases[s]||s}
+function money(n){return '£'+n.toFixed(2)}
+function analyse(){
+ const items=document.getElementById('list').value.split('\\n').map(norm).filter(Boolean);
+ const max=+document.getElementById('maxstores').value, budget=+document.getElementById('budget').value||Infinity;
+ const chosen=[]; let unknown=[];
+ for(const item of items){
+   const opts=P.filter(x=>x[0]===item);
+   if(!opts.length){unknown.push(item);continue}
+   const best=opts.reduce((a,b)=>effective(a)<effective(b)?a:b); chosen.push({item, p:best});
+ }
+ const stores=[...new Set(P.map(x=>x[1]))];
+ const single=stores.map(s=>({s,total:chosen.reduce((t,x)=>{const o=P.filter(p=>p[0]===x.item&&p[1]===s);return t+(o.length?effective(o[0]):999)},0)})).sort((a,b)=>a.total-b.total);
+ // Exhaustive store subsets for up to 3 stores; assign each item to cheapest store in subset.
+ let combos=[];
+ function subsets(arr,k,start=0,p=[]){if(p.length===k){combos.push([...p]);return}for(let i=start;i<arr.length;i++)subsets(arr,k,i+1,[...p,arr[i]])}
+ for(let k=1;k<=max;k++)subsets(stores,k);
+ const plans=combos.map(ss=>{let total=0, lines=[]; for(const x of chosen){let opts=ss.map(s=>P.find(p=>p[0]===x.item&&p[1]===s)).filter(Boolean);let b=opts.reduce((a,b)=>effective(a)<effective(b)?a:b);total+=effective(b);lines.push({item:x.item,p:b})}return{stores:ss,total,lines}}).sort((a,b)=>a.total-b.total);
+ const best=plans[0], one=single[0];
+ last={chosen,single,plans,best,one,budget,unknown};
+ render(last);
+}
+function effective(p){return p[5]??p[4]}
+function render(r){
+ const practical=r.plans.find(p=>p.stores.length<=3)||r.best, saving=Math.max(0,r.one.total-practical.total);
+ const travelPenalty=Math.max(0,(practical.stores.length-1)*1.50);
+ const practicalCost=practical.total+travelPenalty;
+ const out=document.getElementById('results');
+ out.innerHTML=`<div class="winner"><div>BEST PRACTICAL BASKET</div><div class="big">${money(practicalCost)}</div><div class="save">Potential saving vs cheapest one-store shop: ${money(Math.max(0,r.one.total-practicalCost))}</div><div style="margin-top:10px">${practical.stores.join(' + ')} · includes £${(travelPenalty).toFixed(2)} practical trip allowance</div></div>
+ <div class="kpis"><div class="kpi"><small>Cheapest one store</small><strong>${money(r.one.total)}</strong></div><div class="kpi"><small>Best split</small><strong>${money(practical.total)}</strong></div><div class="kpi"><small>Stores</small><strong>${practical.stores.length}</strong></div><div class="kpi"><small>Budget left</small><strong>${money(Math.max(0,r.budget-practicalCost))}</strong></div></div>
+ <div class="grid"><div class="card"><h3>What to buy</h3>${practical.lines.map(x=>`<div class="row"><div><b>${cap(x.item)}</b><div class="muted">${x.p[2]} · ${x.p[3]} · ${x.p[1]}${x.p[5]!=null?' · loyalty price':''}</div></div><div class="price">${money(effective(x.p))}</div></div>`).join('')}</div>
+ <div class="card"><h3>Store options</h3><div class="storegrid">${r.single.map((s,i)=>`<div class="store ${i===0?'best':''}"><h4>${s.s}</h4><b>${money(s.total)}</b><span class="muted">${i===0?'Cheapest one-stop shop':'Compared basket'}</span></div>`).join('')}</div><p class="muted">Prototype practicality allowance is illustrative. A production version would use the user's location, delivery fees, minimums and travel time.</p></div></div>
+ ${r.unknown.length?`<div class="note">Couldn't confidently match: ${r.unknown.map(cap).join(', ')}. SmartBasket should never invent a product match.</div>`:''}`;
+ document.getElementById('compareContent').innerHTML=`<h3>Best routes for this basket</h3>${r.plans.slice(0,8).map((p,i)=>`<div class="row"><div><b>${i===0?'🏆 ':''}${p.stores.join(' + ')}</b><div class="muted">${p.lines.map(x=>x.p[2]).join(' · ')}</div></div><div class="price">${money(p.total)}</div></div>`).join('')}`;
+ out.classList.remove('hidden');
+}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function demo(){document.getElementById('list').value='Chicken breast\\nEggs\\nGreek yoghurt\\nRice\\nBananas\\nMilk\\nBread';analyse()}
+function tab(id,btn){['shop','compare','data'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));btn.classList.add('on')}
+document.getElementById('tbody').innerHTML=P.map(p=>`<tr><td>${p[2]}</td><td>${p[1]}</td><td>${p[3]}</td><td>${money(p[4])}${p[5]!=null?' / '+money(p[5])+' loyalty':''}</td><td>${p[6]}</td><td>22 Aug 2026</td><td>Prototype seed data</td></tr>`).join('');
+demo();
+</script></body></html>
