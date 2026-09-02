@@ -14,21 +14,21 @@
 
 :root{
 
-  --dark:#174b2a;
+  --green:#174b2a;
 
-  --green:#2e8b57;
+  --green2:#2e8b57;
 
   --light:#f4f8f5;
 
-  --accent:#e4f1e8;
+  --dark:#17202a;
 
-  --text:#1f2933;
+  --grey:#667085;
 
-  --muted:#667085;
+  --border:#d9e1dc;
+
+  --red:#e74c3c;
 
   --white:#ffffff;
-
-  --danger:#c0392b;
 
 }
 
@@ -36,173 +36,201 @@
 
   box-sizing:border-box;
 
+  margin:0;
+
+  padding:0;
+
 }
 
 body{
 
-  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 
-  font-family:Arial, Helvetica, sans-serif;
+  background:#f5f7f6;
 
-  background:var(--light);
-
-  color:var(--text);
+  color:var(--dark);
 
 }
 
 header{
 
-  background:linear-gradient(135deg,#174b2a,#2e8b57);
+  background:linear-gradient(135deg,#123c22,#247047);
 
   color:white;
 
-  padding:18px;
+  padding:20px;
 
   position:sticky;
 
   top:0;
 
-  z-index:10;
-
-  box-shadow:0 2px 10px rgba(0,0,0,.15);
+  z-index:100;
 
 }
 
-.header-inner{
+.nav{
 
-  max-width:1180px;
+  max-width:1100px;
 
   margin:auto;
 
   display:flex;
 
-  justify-content:space-between;
-
   align-items:center;
+
+  justify-content:space-between;
 
 }
 
 .logo{
 
-  display:flex;
+  font-size:28px;
 
-  align-items:center;
-
-  gap:10px;
-
-  font-size:24px;
-
-  font-weight:bold;
+  font-weight:800;
 
 }
 
-.logo-icon{
+.logo span{
 
-  font-size:30px;
+  font-size:32px;
+
+  margin-right:8px;
 
 }
 
-.cart-button{
+.basket-button{
 
   background:white;
 
-  color:var(--dark);
+  color:var(--green);
 
   border:none;
 
-  padding:10px 16px;
+  padding:12px 20px;
 
-  border-radius:25px;
+  border-radius:30px;
 
-  font-weight:bold;
+  font-size:17px;
+
+  font-weight:700;
 
   cursor:pointer;
 
-  font-size:16px;
+}
+
+.basket-count{
+
+  background:var(--red);
+
+  color:white;
+
+  border-radius:50%;
+
+  width:26px;
+
+  height:26px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  margin-left:7px;
+
+  font-size:13px;
 
 }
 
 .hero{
 
-  background:linear-gradient(135deg,#e4f1e8,#ffffff);
-
-  padding:45px 20px;
+  background:linear-gradient(180deg,#e7f1eb,#f7f8f7);
 
   text-align:center;
+
+  padding:65px 20px 50px;
 
 }
 
 .hero h1{
 
-  margin:0;
+  font-size:48px;
 
-  font-size:clamp(30px,5vw,50px);
+  color:var(--green);
 
-  color:var(--dark);
+  margin-bottom:18px;
 
 }
 
 .hero p{
 
-  color:var(--muted);
+  font-size:22px;
 
-  font-size:18px;
+  color:#586174;
 
   max-width:650px;
 
-  margin:15px auto;
-
-}
-
-.container{
-
-  max-width:1180px;
-
   margin:auto;
 
-  padding:25px 20px 60px;
+  line-height:1.5;
 
 }
 
-.controls{
+.search-area{
+
+  max-width:850px;
+
+  margin:35px auto 0;
 
   display:flex;
 
   gap:12px;
 
-  flex-wrap:wrap;
-
-  margin-bottom:25px;
-
 }
 
-.search{
+.search-area input{
 
   flex:1;
 
-  min-width:220px;
+  padding:19px;
 
-  padding:14px;
+  border-radius:14px;
 
-  border:1px solid #ddd;
+  border:1px solid var(--border);
 
-  border-radius:10px;
-
-  font-size:16px;
-
-}
-
-select{
-
-  padding:14px;
-
-  border:1px solid #ddd;
-
-  border-radius:10px;
+  font-size:18px;
 
   background:white;
 
-  font-size:16px;
+}
+
+.search-area button{
+
+  background:var(--green);
+
+  color:white;
+
+  border:none;
+
+  border-radius:14px;
+
+  padding:0 25px;
+
+  font-size:17px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+}
+
+.container{
+
+  max-width:1100px;
+
+  margin:auto;
+
+  padding:35px 20px 80px;
 
 }
 
@@ -214,7 +242,13 @@ select{
 
   align-items:center;
 
-  margin-bottom:18px;
+  margin-bottom:25px;
+
+}
+
+.section-title h2{
+
+  font-size:32px;
 
 }
 
@@ -222,27 +256,29 @@ select{
 
   display:grid;
 
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
 
-  gap:18px;
+  gap:20px;
 
 }
 
-.product{
+.product-card{
 
   background:white;
 
-  border-radius:15px;
+  border-radius:18px;
 
-  padding:18px;
+  padding:20px;
 
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  border:1px solid var(--border);
+
+  box-shadow:0 4px 15px rgba(0,0,0,.04);
 
   transition:.2s;
 
 }
 
-.product:hover{
+.product-card:hover{
 
   transform:translateY(-3px);
 
@@ -250,111 +286,105 @@ select{
 
 .product-image{
 
-  height:120px;
+  height:100px;
+
+  background:#eef3ef;
+
+  border-radius:14px;
 
   display:flex;
 
-  justify-content:center;
-
   align-items:center;
 
-  font-size:70px;
+  justify-content:center;
 
-  background:#f5f7f6;
+  font-size:55px;
 
-  border-radius:12px;
-
-  margin-bottom:12px;
-
-}
-
-.product h3{
-
-  margin:8px 0;
-
-}
-
-.price{
-
-  color:var(--green);
-
-  font-size:20px;
-
-  font-weight:bold;
+  margin-bottom:15px;
 
 }
 
 .category{
 
-  color:var(--muted);
+  color:var(--grey);
 
-  font-size:13px;
+  font-size:14px;
+
+  margin-bottom:5px;
 
 }
 
-.add-button{
+.product-card h3{
+
+  font-size:21px;
+
+  margin-bottom:8px;
+
+}
+
+.price{
+
+  font-size:20px;
+
+  font-weight:700;
+
+  color:var(--green);
+
+  margin-bottom:15px;
+
+}
+
+.add-btn{
 
   width:100%;
 
-  margin-top:12px;
+  background:#e5f0e9;
 
-  padding:12px;
+  color:var(--green);
 
   border:none;
 
-  background:var(--dark);
+  padding:13px;
 
-  color:white;
+  border-radius:10px;
 
-  border-radius:8px;
+  font-weight:700;
 
-  font-weight:bold;
+  font-size:16px;
 
   cursor:pointer;
 
 }
 
-.add-button:hover{
+.add-btn:hover{
 
   background:var(--green);
 
+  color:white;
+
 }
 
-/* CART */
-
-.cart-panel{
+.compare-section{
 
   display:none;
 
-  position:fixed;
+  margin-top:35px;
 
-  top:0;
+}
 
-  right:0;
-
-  width:min(420px,100%);
-
-  height:100vh;
+.compare-box{
 
   background:white;
 
-  z-index:100;
+  border-radius:20px;
 
-  box-shadow:-5px 0 20px rgba(0,0,0,.2);
+  padding:30px;
 
-  padding:20px;
-
-  overflow-y:auto;
+  border:1px solid var(--border);
 
 }
 
-.cart-panel.open{
-
-  display:block;
-
-}
-
-.cart-header{
+.compare-header{
 
   display:flex;
 
@@ -362,47 +392,199 @@ select{
 
   align-items:center;
 
-  border-bottom:1px solid #eee;
+  flex-wrap:wrap;
 
-  padding-bottom:15px;
+  gap:15px;
+
+  margin-bottom:25px;
 
 }
 
-.close{
+.compare-btn{
+
+  background:var(--green);
+
+  color:white;
 
   border:none;
 
-  background:#eee;
+  padding:16px 25px;
 
-  width:38px;
+  border-radius:12px;
 
-  height:38px;
+  font-size:17px;
 
-  border-radius:50%;
-
-  font-size:20px;
+  font-weight:700;
 
   cursor:pointer;
 
 }
 
-.cart-item{
+.compare-btn:hover{
+
+  background:#0e351d;
+
+}
+
+.supermarket-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+  gap:15px;
+
+}
+
+.supermarket{
+
+  border:1px solid var(--border);
+
+  border-radius:14px;
+
+  padding:20px;
+
+  background:white;
+
+}
+
+.supermarket.best{
+
+  border:3px solid #2e8b57;
+
+  background:#f0faf3;
+
+}
+
+.supermarket-top{
 
   display:flex;
 
   justify-content:space-between;
 
-  gap:10px;
+  align-items:center;
 
-  padding:15px 0;
+}
+
+.supermarket h3{
+
+  font-size:20px;
+
+}
+
+.total-price{
+
+  font-size:28px;
+
+  font-weight:800;
+
+  color:var(--green);
+
+  margin:10px 0;
+
+}
+
+.saving{
+
+  color:#2e8b57;
+
+  font-weight:700;
+
+}
+
+.best-label{
+
+  background:#2e8b57;
+
+  color:white;
+
+  padding:5px 10px;
+
+  border-radius:20px;
+
+  font-size:12px;
+
+  font-weight:bold;
+
+}
+
+.basket-panel{
+
+  position:fixed;
+
+  top:0;
+
+  right:-450px;
+
+  width:420px;
+
+  max-width:100%;
+
+  height:100vh;
+
+  background:white;
+
+  z-index:500;
+
+  box-shadow:-10px 0 30px rgba(0,0,0,.15);
+
+  transition:.3s;
+
+  padding:25px;
+
+  overflow-y:auto;
+
+}
+
+.basket-panel.open{
+
+  right:0;
+
+}
+
+.basket-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:25px;
+
+}
+
+.close-btn{
+
+  border:none;
+
+  background:#eee;
+
+  width:40px;
+
+  height:40px;
+
+  border-radius:50%;
+
+  font-size:24px;
+
+  cursor:pointer;
+
+}
+
+.basket-item{
+
+  padding:18px 0;
 
   border-bottom:1px solid #eee;
 
 }
 
-.cart-item-info{
+.basket-item-top{
 
-  flex:1;
+  display:flex;
+
+  justify-content:space-between;
 
 }
 
@@ -412,25 +594,27 @@ select{
 
   align-items:center;
 
-  gap:10px;
+  gap:12px;
 
-  margin-top:8px;
+  margin-top:12px;
 
 }
 
 .qty-btn{
 
-  width:30px;
+  width:36px;
 
-  height:30px;
+  height:36px;
 
   border:none;
 
-  border-radius:6px;
+  border-radius:9px;
 
-  background:var(--accent);
+  background:#e5f0e9;
 
-  font-size:18px;
+  color:var(--green);
+
+  font-size:22px;
 
   cursor:pointer;
 
@@ -438,59 +622,41 @@ select{
 
 .remove{
 
-  color:var(--danger);
-
-  border:none;
+  color:#c0392b;
 
   background:none;
 
+  border:none;
+
+  margin-top:10px;
+
   cursor:pointer;
 
-  margin-top:5px;
+}
+
+.basket-footer{
+
+  margin-top:25px;
 
 }
 
-.cart-total{
-
-  margin-top:20px;
-
-  padding-top:20px;
-
-  border-top:2px solid #eee;
-
-}
-
-.total-row{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  font-size:22px;
-
-  font-weight:bold;
-
-}
-
-.checkout{
+.check-all-btn{
 
   width:100%;
 
-  margin-top:18px;
-
-  padding:15px;
-
-  border:none;
-
-  border-radius:10px;
-
-  background:var(--green);
+  background:#e74c3c;
 
   color:white;
 
-  font-size:17px;
+  border:none;
 
-  font-weight:bold;
+  padding:18px;
+
+  border-radius:14px;
+
+  font-size:18px;
+
+  font-weight:800;
 
   cursor:pointer;
 
@@ -500,33 +666,67 @@ select{
 
   text-align:center;
 
-  color:var(--muted);
+  color:#777;
 
-  padding:50px 10px;
+  padding:40px 0;
 
 }
 
-.badge{
+.info-box{
 
-  display:inline-block;
+  background:#fff8e7;
 
-  background:#e53935;
+  border:1px solid #f0d58a;
 
-  color:white;
+  padding:18px;
 
-  min-width:22px;
+  border-radius:12px;
 
-  height:22px;
+  margin-top:25px;
+
+  color:#725c1d;
+
+  line-height:1.5;
+
+}
+
+.supermarkets-list{
+
+  margin-top:30px;
+
+  background:white;
+
+  padding:25px;
+
+  border-radius:18px;
+
+  border:1px solid var(--border);
+
+}
+
+.supermarket-tags{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:15px;
+
+}
+
+.tag{
+
+  background:#edf3ee;
+
+  padding:9px 15px;
 
   border-radius:20px;
 
-  text-align:center;
+  font-weight:600;
 
-  line-height:22px;
-
-  font-size:13px;
-
-  margin-left:5px;
+  color:var(--green);
 
 }
 
@@ -534,23 +734,53 @@ footer{
 
   text-align:center;
 
-  padding:30px;
+  padding:35px;
 
-  color:var(--muted);
+  color:#777;
 
 }
 
 @media(max-width:600px){
 
-  .header-inner{
+  .hero{
 
-    gap:10px;
+    padding:45px 20px 35px;
 
   }
 
-  .logo{
+  .hero h1{
 
-    font-size:20px;
+    font-size:36px;
+
+  }
+
+  .hero p{
+
+    font-size:19px;
+
+  }
+
+  .search-area{
+
+    flex-direction:column;
+
+  }
+
+  .search-area button{
+
+    padding:17px;
+
+  }
+
+  .section-title h2{
+
+    font-size:27px;
+
+  }
+
+  .basket-panel{
+
+    width:100%;
 
   }
 
@@ -564,111 +794,163 @@ footer{
 
 <header>
 
-  <div class="header-inner">
+<div class="nav">
 
-    <div class="logo">
+<div class="logo">
 
-      <span class="logo-icon">🛒</span>
+<span>🛒</span>SmartBasket
 
-      SmartBasket
+</div>
 
-    </div>
+<button class="basket-button" onclick="openBasket()">
 
-    <button class="cart-button" onclick="toggleCart()">
+Basket
 
-      Basket <span class="badge" id="cartCount">0</span>
+<span class="basket-count" id="basketCount">0</span>
 
-    </button>
+</button>
 
-  </div>
+</div>
 
 </header>
 
 <section class="hero">
 
-  <h1>The smarter way to shop.</h1>
+<h1>The smarter way to shop.</h1>
 
-  <p>
+<p>
 
-    Build your basket, keep track of your spending and shop smarter with SmartBasket.
+Build your shopping basket and let SmartBasket compare prices
 
-  </p>
+across the UK's major supermarkets.
 
-</section>
+</p>
 
-<main class="container">
-
-<div class="controls">
+<div class="search-area">
 
 <input
 
-class="search"
+type="text"
 
 id="searchInput"
 
 placeholder="Search products..."
 
-oninput="filterProducts()"
+onkeyup="searchProducts()"
 
 >
 
-<select id="categoryFilter" onchange="filterProducts()">
-
-<option value="all">All categories</option>
-
-<option value="Fruit">Fruit</option>
-
-<option value="Vegetables">Vegetables</option>
-
-<option value="Bakery">Bakery</option>
-
-<option value="Dairy">Dairy</option>
-
-<option value="Meat">Meat</option>
-
-</select>
+<button onclick="searchProducts()">Search</button>
 
 </div>
+
+</section>
+
+<main class="container">
 
 <div class="section-title">
 
 <h2>Popular products</h2>
 
-<span id="productCount"></span>
+<span id="productCount">20 products</span>
 
 </div>
 
 <div class="product-grid" id="productGrid"></div>
 
+<div class="compare-section" id="compareSection">
+
+<div class="compare-box">
+
+<div class="compare-header">
+
+<div>
+
+<h2>🏆 Supermarket comparison</h2>
+
+<p style="color:#667085;margin-top:7px;">
+
+Checking your entire basket across supermarkets
+
+</p>
+
+</div>
+
+<button class="compare-btn" onclick="compareBasket()">
+
+Check all supermarkets
+
+</button>
+
+</div>
+
+<div class="supermarket-grid" id="comparisonResults"></div>
+
+<div class="info-box">
+
+<strong>SmartBasket comparison:</strong>
+
+Prices shown are currently generated from the SmartBasket product
+
+database for demonstration purposes. Live supermarket pricing integration
+
+is the next stage of the project.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="supermarkets-list">
+
+<h2>Supermarkets we compare</h2>
+
+<div class="supermarket-tags">
+
+<div class="tag">Tesco</div>
+
+<div class="tag">ASDA</div>
+
+<div class="tag">Sainsbury's</div>
+
+<div class="tag">Morrisons</div>
+
+<div class="tag">Aldi</div>
+
+<div class="tag">Lidl</div>
+
+<div class="tag">Waitrose</div>
+
+<div class="tag">Iceland</div>
+
+<div class="tag">Co-op</div>
+
+<div class="tag">Ocado</div>
+
+</div>
+
+</div>
+
 </main>
 
-<!-- SHOPPING CART -->
+<div class="basket-panel" id="basketPanel">
 
-<div class="cart-panel" id="cartPanel">
+<div class="basket-header">
 
-<div class="cart-header">
+<h2>Your basket</h2>
 
-<h2>Your Basket</h2>
-
-<button class="close" onclick="toggleCart()">×</button>
+<button class="close-btn" onclick="closeBasket()">×</button>
 
 </div>
 
-<div id="cartItems"></div>
+<div id="basketItems"></div>
 
-<div class="cart-total">
+<div class="basket-footer">
 
-<div class="total-row">
+<button class="check-all-btn" onclick="checkBasket()">
 
-<span>Total</span>
-
-<span id="cartTotal">£0.00</span>
-
-</div>
-
-<button class="checkout" onclick="checkout()">
-
-Checkout
+🔎 Check all supermarkets
 
 </button>
 
@@ -678,7 +960,7 @@ Checkout
 
 <footer>
 
-© 2026 SmartBasket · Shop smarter.
+© 2026 SmartBasket · Shop smarter, spend less.
 
 </footer>
 
@@ -692,11 +974,33 @@ id:1,
 
 name:"Bananas",
 
-price:1.20,
+emoji:"🍌",
 
 category:"Fruit",
 
-image:"🍌"
+prices:{
+
+Tesco:0.95,
+
+ASDA:0.89,
+
+Sainsburys:1.05,
+
+Morrisons:0.95,
+
+Aldi:0.79,
+
+Lidl:0.82,
+
+Waitrose:1.20,
+
+Iceland:1.00,
+
+Coop:1.10,
+
+Ocado:1.15
+
+}
 
 },
 
@@ -704,13 +1008,35 @@ image:"🍌"
 
 id:2,
 
-name:"Red Apples",
+name:"Milk",
 
-price:2.00,
+emoji:"🥛",
 
-category:"Fruit",
+category:"Dairy",
 
-image:"🍎"
+prices:{
+
+Tesco:1.45,
+
+ASDA:1.39,
+
+Sainsburys:1.50,
+
+Morrisons:1.45,
+
+Aldi:1.35,
+
+Lidl:1.32,
+
+Waitrose:1.75,
+
+Iceland:1.50,
+
+Coop:1.65,
+
+Ocado:1.70
+
+}
 
 },
 
@@ -718,13 +1044,35 @@ image:"🍎"
 
 id:3,
 
-name:"Strawberries",
+name:"Eggs",
 
-price:2.50,
+emoji:"🥚",
 
-category:"Fruit",
+category:"Dairy",
 
-image:"🍓"
+prices:{
+
+Tesco:2.20,
+
+ASDA:2.00,
+
+Sainsburys:2.25,
+
+Morrisons:2.10,
+
+Aldi:1.89,
+
+Lidl:1.85,
+
+Waitrose:2.75,
+
+Iceland:2.20,
+
+Coop:2.60,
+
+Ocado:2.70
+
+}
 
 },
 
@@ -732,13 +1080,35 @@ image:"🍓"
 
 id:4,
 
-name:"Carrots",
+name:"Chicken Breast",
 
-price:0.90,
+emoji:"🍗",
 
-category:"Vegetables",
+category:"Meat",
 
-image:"🥕"
+prices:{
+
+Tesco:4.50,
+
+ASDA:4.25,
+
+Sainsburys:4.75,
+
+Morrisons:4.40,
+
+Aldi:3.99,
+
+Lidl:4.10,
+
+Waitrose:5.50,
+
+Iceland:4.50,
+
+Coop:5.00,
+
+Ocado:5.20
+
+}
 
 },
 
@@ -746,13 +1116,35 @@ image:"🥕"
 
 id:5,
 
-name:"Broccoli",
+name:"Cheddar Cheese",
 
-price:1.10,
+emoji:"🧀",
 
-category:"Vegetables",
+category:"Dairy",
 
-image:"🥦"
+prices:{
+
+Tesco:2.75,
+
+ASDA:2.50,
+
+Sainsburys:2.80,
+
+Morrisons:2.60,
+
+Aldi:2.29,
+
+Lidl:2.35,
+
+Waitrose:3.25,
+
+Iceland:2.70,
+
+Coop:3.00,
+
+Ocado:3.10
+
+}
 
 },
 
@@ -760,13 +1152,35 @@ image:"🥦"
 
 id:6,
 
-name:"Sliced Bread",
+name:"Bread",
 
-price:1.50,
+emoji:"🍞",
 
 category:"Bakery",
 
-image:"🍞"
+prices:{
+
+Tesco:1.40,
+
+ASDA:1.25,
+
+Sainsburys:1.50,
+
+Morrisons:1.35,
+
+Aldi:0.89,
+
+Lidl:0.85,
+
+Waitrose:1.75,
+
+Iceland:1.20,
+
+Coop:1.60,
+
+Ocado:1.70
+
+}
 
 },
 
@@ -774,13 +1188,35 @@ image:"🍞"
 
 id:7,
 
-name:"Milk",
+name:"Apples",
 
-price:1.45,
+emoji:"🍎",
 
-category:"Dairy",
+category:"Fruit",
 
-image:"🥛"
+prices:{
+
+Tesco:2.00,
+
+ASDA:1.85,
+
+Sainsburys:2.10,
+
+Morrisons:1.95,
+
+Aldi:1.69,
+
+Lidl:1.75,
+
+Waitrose:2.50,
+
+Iceland:1.90,
+
+Coop:2.25,
+
+Ocado:2.40
+
+}
 
 },
 
@@ -788,13 +1224,35 @@ image:"🥛"
 
 id:8,
 
-name:"Cheddar Cheese",
+name:"Pasta",
 
-price:2.75,
+emoji:"🍝",
 
-category:"Dairy",
+category:"Cupboard",
 
-image:"🧀"
+prices:{
+
+Tesco:1.20,
+
+ASDA:1.10,
+
+Sainsburys:1.25,
+
+Morrisons:1.15,
+
+Aldi:0.89,
+
+Lidl:0.85,
+
+Waitrose:1.60,
+
+Iceland:1.00,
+
+Coop:1.40,
+
+Ocado:1.55
+
+}
 
 },
 
@@ -802,13 +1260,35 @@ image:"🧀"
 
 id:9,
 
-name:"Chicken Breast",
+name:"Rice",
 
-price:4.50,
+emoji:"🍚",
 
-category:"Meat",
+category:"Cupboard",
 
-image:"🍗"
+prices:{
+
+Tesco:2.00,
+
+ASDA:1.85,
+
+Sainsburys:2.10,
+
+Morrisons:1.95,
+
+Aldi:1.59,
+
+Lidl:1.65,
+
+Waitrose:2.50,
+
+Iceland:1.90,
+
+Coop:2.30,
+
+Ocado:2.40
+
+}
 
 },
 
@@ -816,61 +1296,429 @@ image:"🍗"
 
 id:10,
 
-name:"Eggs",
+name:"Potatoes",
 
-price:2.20,
+emoji:"🥔",
+
+category:"Vegetables",
+
+prices:{
+
+Tesco:2.20,
+
+ASDA:2.00,
+
+Sainsburys:2.30,
+
+Morrisons:2.10,
+
+Aldi:1.59,
+
+Lidl:1.69,
+
+Waitrose:2.80,
+
+Iceland:2.00,
+
+Coop:2.50,
+
+Ocado:2.60
+
+}
+
+},
+
+{
+
+id:11,
+
+name:"Tomatoes",
+
+emoji:"🍅",
+
+category:"Vegetables",
+
+prices:{
+
+Tesco:1.80,
+
+ASDA:1.65,
+
+Sainsburys:1.90,
+
+Morrisons:1.75,
+
+Aldi:1.39,
+
+Lidl:1.45,
+
+Waitrose:2.20,
+
+Iceland:1.70,
+
+Coop:2.00,
+
+Ocado:2.10
+
+}
+
+},
+
+{
+
+id:12,
+
+name:"Onions",
+
+emoji:"🧅",
+
+category:"Vegetables",
+
+prices:{
+
+Tesco:1.10,
+
+ASDA:1.00,
+
+Sainsburys:1.20,
+
+Morrisons:1.05,
+
+Aldi:0.79,
+
+Lidl:0.75,
+
+Waitrose:1.50,
+
+Iceland:1.00,
+
+Coop:1.30,
+
+Ocado:1.40
+
+}
+
+},
+
+{
+
+id:13,
+
+name:"Carrots",
+
+emoji:"🥕",
+
+category:"Vegetables",
+
+prices:{
+
+Tesco:0.85,
+
+ASDA:0.75,
+
+Sainsburys:0.90,
+
+Morrisons:0.80,
+
+Aldi:0.55,
+
+Lidl:0.59,
+
+Waitrose:1.20,
+
+Iceland:0.75,
+
+Coop:1.00,
+
+Ocado:1.10
+
+}
+
+},
+
+{
+
+id:14,
+
+name:"Butter",
+
+emoji:"🧈",
 
 category:"Dairy",
 
-image:"🥚"
+prices:{
+
+Tesco:2.25,
+
+ASDA:2.10,
+
+Sainsburys:2.30,
+
+Morrisons:2.15,
+
+Aldi:1.89,
+
+Lidl:1.95,
+
+Waitrose:2.80,
+
+Iceland:2.20,
+
+Coop:2.60,
+
+Ocado:2.70
+
+}
+
+},
+
+{
+
+id:15,
+
+name:"Coffee",
+
+emoji:"☕",
+
+category:"Drinks",
+
+prices:{
+
+Tesco:4.50,
+
+ASDA:4.25,
+
+Sainsburys:4.75,
+
+Morrisons:4.40,
+
+Aldi:3.50,
+
+Lidl:3.75,
+
+Waitrose:5.20,
+
+Iceland:4.30,
+
+Coop:4.90,
+
+Ocado:5.00
+
+}
+
+},
+
+{
+
+id:16,
+
+name:"Orange Juice",
+
+emoji:"🧃",
+
+category:"Drinks",
+
+prices:{
+
+Tesco:2.00,
+
+ASDA:1.85,
+
+Sainsburys:2.10,
+
+Morrisons:1.95,
+
+Aldi:1.49,
+
+Lidl:1.55,
+
+Waitrose:2.50,
+
+Iceland:1.90,
+
+Coop:2.30,
+
+Ocado:2.40
+
+}
+
+},
+
+{
+
+id:17,
+
+name:"Cereal",
+
+emoji:"🥣",
+
+category:"Breakfast",
+
+prices:{
+
+Tesco:3.00,
+
+ASDA:2.75,
+
+Sainsburys:3.10,
+
+Morrisons:2.90,
+
+Aldi:1.99,
+
+Lidl:2.10,
+
+Waitrose:3.80,
+
+Iceland:2.80,
+
+Coop:3.40,
+
+Ocado:3.60
+
+}
+
+},
+
+{
+
+id:18,
+
+name:"Biscuits",
+
+emoji:"🍪",
+
+category:"Snacks",
+
+prices:{
+
+Tesco:1.75,
+
+ASDA:1.50,
+
+Sainsburys:1.80,
+
+Morrisons:1.65,
+
+Aldi:1.20,
+
+Lidl:1.25,
+
+Waitrose:2.20,
+
+Iceland:1.50,
+
+Coop:2.00,
+
+Ocado:2.10
+
+}
+
+},
+
+{
+
+id:19,
+
+name:"Crisps",
+
+emoji:"🥔",
+
+category:"Snacks",
+
+prices:{
+
+Tesco:2.25,
+
+ASDA:2.00,
+
+Sainsburys:2.30,
+
+Morrisons:2.15,
+
+Aldi:1.69,
+
+Lidl:1.75,
+
+Waitrose:2.80,
+
+Iceland:2.00,
+
+Coop:2.60,
+
+Ocado:2.70
+
+}
+
+},
+
+{
+
+id:20,
+
+name:"Chocolate",
+
+emoji:"🍫",
+
+category:"Snacks",
+
+prices:{
+
+Tesco:1.50,
+
+ASDA:1.35,
+
+Sainsburys:1.55,
+
+Morrisons:1.45,
+
+Aldi:0.99,
+
+Lidl:1.05,
+
+Waitrose:2.00,
+
+Iceland:1.30,
+
+Coop:1.75,
+
+Ocado:1.90
+
+}
 
 }
 
 ];
 
-let cart = JSON.parse(localStorage.getItem("smartbasketCart")) || [];
+let basket = [];
 
-/* DISPLAY PRODUCTS */
-
-function displayProducts(productList){
+function renderProducts(productList = products){
 
 const grid = document.getElementById("productGrid");
 
-grid.innerHTML = "";
+grid.innerHTML="";
 
-productList.forEach(product => {
+document.getElementById("productCount").innerText =
+
+productList.length + " products";
+
+productList.forEach(product=>{
+
+const minPrice = Math.min(...Object.values(product.prices));
 
 grid.innerHTML += `
 
-<div class="product">
+<div class="product-card">
 
-<div class="product-image">
+<div class="product-image">${product.emoji}</div>
 
-${product.image}
-
-</div>
-
-<div class="category">
-
-${product.category}
-
-</div>
+<div class="category">${product.category}</div>
 
 <h3>${product.name}</h3>
 
-<div class="price">
+<div class="price">From £${minPrice.toFixed(2)}</div>
 
-£${product.price.toFixed(2)}
-
-</div>
-
-<button
-
-class="add-button"
-
-onclick="addToCart(${product.id})"
-
->
+<button class="add-btn" onclick="addToBasket(${product.id})">
 
 Add to basket
 
@@ -882,29 +1730,39 @@ Add to basket
 
 });
 
-document.getElementById("productCount").textContent =
+}
 
-productList.length + " products";
+function searchProducts(){
+
+const search =
+
+document.getElementById("searchInput").value.toLowerCase();
+
+const filtered = products.filter(product =>
+
+product.name.toLowerCase().includes(search) ||
+
+product.category.toLowerCase().includes(search)
+
+);
+
+renderProducts(filtered);
 
 }
 
-/* ADD TO CART */
+function addToBasket(id){
 
-function addToCart(id){
+const existing = basket.find(item=>item.id===id);
 
-const product = products.find(p => p.id === id);
+if(existing){
 
-const existingItem = cart.find(item => item.id === id);
+existing.quantity++;
 
-if(existingItem){
+}else{
 
-existingItem.quantity++;
+const product = products.find(product=>product.id===id);
 
-}
-
-else{
-
-cart.push({
+basket.push({
 
 ...product,
 
@@ -914,95 +1772,77 @@ quantity:1
 
 }
 
-saveCart();
-
-updateCart();
+updateBasket();
 
 }
 
-/* UPDATE CART */
+function updateBasket(){
 
-function updateCart(){
+const count = basket.reduce(
 
-const cartItems = document.getElementById("cartItems");
+(total,item)=>total+item.quantity,0
 
-const cartCount = document.getElementById("cartCount");
+);
 
-const cartTotal = document.getElementById("cartTotal");
+document.getElementById("basketCount").innerText=count;
 
-if(cart.length === 0){
+const basketItems =
 
-cartItems.innerHTML = `
+document.getElementById("basketItems");
+
+if(basket.length===0){
+
+basketItems.innerHTML=`
 
 <div class="empty">
 
 <h3>Your basket is empty</h3>
 
-<p>Start adding some products!</p>
+<p>Add some products to start comparing prices.</p>
 
 </div>
 
 `;
 
+return;
+
 }
 
-else{
+basketItems.innerHTML="";
 
-cartItems.innerHTML = "";
+basket.forEach(item=>{
 
-cart.forEach(item => {
+basketItems.innerHTML += `
 
-cartItems.innerHTML += `
+<div class="basket-item">
 
-<div class="cart-item">
-
-<div class="cart-item-info">
-
-<strong>${item.image} ${item.name}</strong>
+<div class="basket-item-top">
 
 <div>
 
-£${item.price.toFixed(2)}
+<strong>${item.emoji} ${item.name}</strong>
+
+</div>
 
 </div>
 
 <div class="quantity-controls">
 
-<button
+<button class="qty-btn"
 
-class="qty-btn"
+onclick="changeQuantity(${item.id},-1)">−</button>
 
-onclick="changeQuantity(${item.id},-1)"
+<strong>${item.quantity}</strong>
 
->
+<button class="qty-btn"
 
-−
-
-</button>
-
-<span>${item.quantity}</span>
-
-<button
-
-class="qty-btn"
-
-onclick="changeQuantity(${item.id},1)"
-
->
-
-+
-
-</button>
+onclick="changeQuantity(${item.id},1)">+</button>
 
 </div>
 
-<button
+<button class="remove"
 
-class="remove"
-
-onclick="removeItem(${item.id})"
-
->
+onclick="removeItem(${item.id})">
 
 Remove
 
@@ -1010,15 +1850,215 @@ Remove
 
 </div>
 
-<div>
+`;
 
-<strong>
+});
 
-£${(item.price * item.quantity).toFixed(2)}
+}
 
-</strong>
+function changeQuantity(id,amount){
+
+const item = basket.find(item=>item.id===id);
+
+if(!item)return;
+
+item.quantity += amount;
+
+if(item.quantity<=0){
+
+removeItem(id);
+
+return;
+
+}
+
+updateBasket();
+
+}
+
+function removeItem(id){
+
+basket = basket.filter(item=>item.id!==id);
+
+updateBasket();
+
+}
+
+function openBasket(){
+
+document.getElementById("basketPanel")
+
+.classList.add("open");
+
+}
+
+function closeBasket(){
+
+document.getElementById("basketPanel")
+
+.classList.remove("open");
+
+}
+
+function checkBasket(){
+
+if(basket.length===0){
+
+alert("Add some products to your basket first!");
+
+return;
+
+}
+
+closeBasket();
+
+document.getElementById("compareSection")
+
+.style.display="block";
+
+compareBasket();
+
+setTimeout(()=>{
+
+document.getElementById("compareSection")
+
+.scrollIntoView({
+
+behavior:"smooth",
+
+block:"start"
+
+});
+
+},200);
+
+}
+
+function compareBasket(){
+
+if(basket.length===0){
+
+alert("Add products to your basket first!");
+
+return;
+
+}
+
+const supermarkets = [
+
+"Tesco",
+
+"ASDA",
+
+"Sainsburys",
+
+"Morrisons",
+
+"Aldi",
+
+"Lidl",
+
+"Waitrose",
+
+"Iceland",
+
+"Coop",
+
+"Ocado"
+
+];
+
+const totals = {};
+
+supermarkets.forEach(store=>{
+
+let total=0;
+
+basket.forEach(item=>{
+
+total += item.prices[store] * item.quantity;
+
+});
+
+totals[store]=total;
+
+});
+
+const sorted = Object.entries(totals)
+
+.sort((a,b)=>a[1]-b[1]);
+
+const cheapest = sorted[0][1];
+
+const results =
+
+document.getElementById("comparisonResults");
+
+results.innerHTML="";
+
+sorted.forEach(([store,total],index=>{
+
+const saving = total-cheapest;
+
+const displayNames={
+
+Tesco:"Tesco",
+
+ASDA:"ASDA",
+
+Sainsburys:"Sainsbury's",
+
+Morrisons:"Morrisons",
+
+Aldi:"Aldi",
+
+Lidl:"Lidl",
+
+Waitrose:"Waitrose",
+
+Iceland:"Iceland",
+
+Coop:"Co-op",
+
+Ocado:"Ocado"
+
+};
+
+results.innerHTML += `
+
+<div class="supermarket ${index===0?"best":""}">
+
+<div class="supermarket-top">
+
+<h3>${displayNames[store]}</h3>
+
+${index===0?
+
+'<span class="best-label">CHEAPEST</span>'
+
+:""}
 
 </div>
+
+<div class="total-price">
+
+£${total.toFixed(2)}
+
+</div>
+
+${index===0?
+
+'<div class="saving">🏆 Best price for your basket</div>'
+
+:
+
+`<div class="saving">
+
+£${saving.toFixed(2)} more expensive
+
+</div>`
+
+}
 
 </div>
 
@@ -1026,185 +2066,15 @@ Remove
 
 });
 
-}
+document.getElementById("compareSection")
 
-const totalItems = cart.reduce(
-
-(total,item) => total + item.quantity,
-
-0
-
-);
-
-const totalPrice = cart.reduce(
-
-(total,item) =>
-
-total + (item.price * item.quantity),
-
-0
-
-);
-
-cartCount.textContent = totalItems;
-
-cartTotal.textContent =
-
-"£" + totalPrice.toFixed(2);
+.style.display="block";
 
 }
 
-/* CHANGE QUANTITY */
+renderProducts();
 
-function changeQuantity(id, amount){
-
-const item = cart.find(item => item.id === id);
-
-item.quantity += amount;
-
-if(item.quantity <= 0){
-
-cart = cart.filter(item => item.id !== id);
-
-}
-
-saveCart();
-
-updateCart();
-
-}
-
-/* REMOVE ITEM */
-
-function removeItem(id){
-
-cart = cart.filter(item => item.id !== id);
-
-saveCart();
-
-updateCart();
-
-}
-
-/* SAVE BASKET */
-
-function saveCart(){
-
-localStorage.setItem(
-
-"smartbasketCart",
-
-JSON.stringify(cart)
-
-);
-
-}
-
-/* OPEN / CLOSE CART */
-
-function toggleCart(){
-
-document
-
-.getElementById("cartPanel")
-
-.classList
-
-.toggle("open");
-
-}
-
-/* SEARCH + FILTER */
-
-function filterProducts(){
-
-const search =
-
-document
-
-.getElementById("searchInput")
-
-.value
-
-.toLowerCase();
-
-const category =
-
-document
-
-.getElementById("categoryFilter")
-
-.value;
-
-const filtered = products.filter(product => {
-
-const matchesSearch =
-
-product.name
-
-.toLowerCase()
-
-.includes(search);
-
-const matchesCategory =
-
-category === "all"
-
-||
-
-product.category === category;
-
-return matchesSearch && matchesCategory;
-
-});
-
-displayProducts(filtered);
-
-}
-
-/* CHECKOUT */
-
-function checkout(){
-
-if(cart.length === 0){
-
-alert("Your basket is empty!");
-
-return;
-
-}
-
-const total = cart.reduce(
-
-(total,item) =>
-
-total + (item.price * item.quantity),
-
-0
-
-);
-
-alert(
-
-"Thanks for shopping with SmartBasket!\\n\\nYour total is £"
-
-+
-
-total.toFixed(2)
-
-+
-
-"\\n\\nCheckout functionality coming soon!"
-
-);
-
-}
-
-/* INITIAL LOAD */
-
-displayProducts(products);
-
-updateCart();
+updateBasket();
 
 </script>
 
