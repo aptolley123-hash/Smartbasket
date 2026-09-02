@@ -1,108 +1,1213 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#174b2a">
-<title>SmartBasket — Find the smarter shop</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartBasket - Shop Smarter</title>
+
 <style>
-:root{--g:#174b2a;--g2:#e4f1e8;--ink:#152019;--muted:#66736b;--line:#dfe4df;--bg:#f6f7f3}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
-.wrap{max-width:1180px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;padding:10px 0 20px}
-.logo{display:flex;gap:12px;align-items:center}.mark{background:var(--g);color:#fff;border-radius:14px;padding:11px;font-size:22px}.logo h1{margin:0;font:700 28px Georgia}.logo small{color:var(--muted)}
-button{cursor:pointer;border:0;font-weight:800}.nav button{background:transparent;padding:10px 14px;border-radius:10px;color:var(--muted)}.nav .on{background:var(--g2);color:var(--g)}
-.hero{background:linear-gradient(135deg,#173f25,#2e7043);color:#fff;border-radius:28px;padding:35px;margin-bottom:20px}.hero h2{font:700 44px Georgia;margin:0 0 8px}.hero p{max-width:700px;line-height:1.6;opacity:.9}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 5px 20px #00000006}
-textarea{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;padding:15px;font-size:16px;resize:vertical}
-.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}.controls input,.controls select{padding:12px;border:1px solid var(--line);border-radius:10px}
-.primary{background:var(--g);color:white;padding:13px 18px;border-radius:12px}.soft{background:var(--g2);color:var(--g);padding:12px 15px;border-radius:12px}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}.kpi small{color:var(--muted)}.kpi strong{display:block;font:700 27px Georgia;margin-top:5px}
-.result{margin-top:18px}.winner{background:var(--g);color:#fff;border-radius:22px;padding:24px}.winner .big{font:700 48px Georgia}.winner .save{font-size:20px;margin-top:4px}
-.row{display:flex;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.muted{color:var(--muted);font-size:13px}.price{font-weight:900;white-space:nowrap}
-.storegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.store{border:1px solid var(--line);border-radius:16px;padding:14px}.store.best{border:2px solid var(--g)}.store h4{margin:0}.store b{font:700 25px Georgia;display:block;margin-top:6px}
-.badge{display:inline-block;background:var(--g2);color:var(--g);padding:4px 8px;border-radius:99px;font-size:12px;font-weight:800}
-table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line)}th{font-size:12px;color:var(--muted);text-transform:uppercase}
-.hidden{display:none}.note{padding:12px;background:#fff7df;border:1px solid #ead9a4;border-radius:12px;color:#72520d;font-size:13px;margin-top:12px}
-@media(max-width:800px){.grid,.kpis,.storegrid{grid-template-columns:1fr}.hero h2{font-size:35px}.top{align-items:flex-start;gap:10px}.nav{display:flex}}
+
+:root{
+
+  --dark:#174b2a;
+
+  --green:#2e8b57;
+
+  --light:#f4f8f5;
+
+  --accent:#e4f1e8;
+
+  --text:#1f2933;
+
+  --muted:#667085;
+
+  --white:#ffffff;
+
+  --danger:#c0392b;
+
+}
+
+*{
+
+  box-sizing:border-box;
+
+}
+
+body{
+
+  margin:0;
+
+  font-family:Arial, Helvetica, sans-serif;
+
+  background:var(--light);
+
+  color:var(--text);
+
+}
+
+header{
+
+  background:linear-gradient(135deg,#174b2a,#2e8b57);
+
+  color:white;
+
+  padding:18px;
+
+  position:sticky;
+
+  top:0;
+
+  z-index:10;
+
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+
+}
+
+.header-inner{
+
+  max-width:1180px;
+
+  margin:auto;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+}
+
+.logo{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  font-size:24px;
+
+  font-weight:bold;
+
+}
+
+.logo-icon{
+
+  font-size:30px;
+
+}
+
+.cart-button{
+
+  background:white;
+
+  color:var(--dark);
+
+  border:none;
+
+  padding:10px 16px;
+
+  border-radius:25px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  font-size:16px;
+
+}
+
+.hero{
+
+  background:linear-gradient(135deg,#e4f1e8,#ffffff);
+
+  padding:45px 20px;
+
+  text-align:center;
+
+}
+
+.hero h1{
+
+  margin:0;
+
+  font-size:clamp(30px,5vw,50px);
+
+  color:var(--dark);
+
+}
+
+.hero p{
+
+  color:var(--muted);
+
+  font-size:18px;
+
+  max-width:650px;
+
+  margin:15px auto;
+
+}
+
+.container{
+
+  max-width:1180px;
+
+  margin:auto;
+
+  padding:25px 20px 60px;
+
+}
+
+.controls{
+
+  display:flex;
+
+  gap:12px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:25px;
+
+}
+
+.search{
+
+  flex:1;
+
+  min-width:220px;
+
+  padding:14px;
+
+  border:1px solid #ddd;
+
+  border-radius:10px;
+
+  font-size:16px;
+
+}
+
+select{
+
+  padding:14px;
+
+  border:1px solid #ddd;
+
+  border-radius:10px;
+
+  background:white;
+
+  font-size:16px;
+
+}
+
+.section-title{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:18px;
+
+}
+
+.product-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+  gap:18px;
+
+}
+
+.product{
+
+  background:white;
+
+  border-radius:15px;
+
+  padding:18px;
+
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+
+  transition:.2s;
+
+}
+
+.product:hover{
+
+  transform:translateY(-3px);
+
+}
+
+.product-image{
+
+  height:120px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:70px;
+
+  background:#f5f7f6;
+
+  border-radius:12px;
+
+  margin-bottom:12px;
+
+}
+
+.product h3{
+
+  margin:8px 0;
+
+}
+
+.price{
+
+  color:var(--green);
+
+  font-size:20px;
+
+  font-weight:bold;
+
+}
+
+.category{
+
+  color:var(--muted);
+
+  font-size:13px;
+
+}
+
+.add-button{
+
+  width:100%;
+
+  margin-top:12px;
+
+  padding:12px;
+
+  border:none;
+
+  background:var(--dark);
+
+  color:white;
+
+  border-radius:8px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+.add-button:hover{
+
+  background:var(--green);
+
+}
+
+/* CART */
+
+.cart-panel{
+
+  display:none;
+
+  position:fixed;
+
+  top:0;
+
+  right:0;
+
+  width:min(420px,100%);
+
+  height:100vh;
+
+  background:white;
+
+  z-index:100;
+
+  box-shadow:-5px 0 20px rgba(0,0,0,.2);
+
+  padding:20px;
+
+  overflow-y:auto;
+
+}
+
+.cart-panel.open{
+
+  display:block;
+
+}
+
+.cart-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  border-bottom:1px solid #eee;
+
+  padding-bottom:15px;
+
+}
+
+.close{
+
+  border:none;
+
+  background:#eee;
+
+  width:38px;
+
+  height:38px;
+
+  border-radius:50%;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+}
+
+.cart-item{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  padding:15px 0;
+
+  border-bottom:1px solid #eee;
+
+}
+
+.cart-item-info{
+
+  flex:1;
+
+}
+
+.quantity-controls{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-top:8px;
+
+}
+
+.qty-btn{
+
+  width:30px;
+
+  height:30px;
+
+  border:none;
+
+  border-radius:6px;
+
+  background:var(--accent);
+
+  font-size:18px;
+
+  cursor:pointer;
+
+}
+
+.remove{
+
+  color:var(--danger);
+
+  border:none;
+
+  background:none;
+
+  cursor:pointer;
+
+  margin-top:5px;
+
+}
+
+.cart-total{
+
+  margin-top:20px;
+
+  padding-top:20px;
+
+  border-top:2px solid #eee;
+
+}
+
+.total-row{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  font-size:22px;
+
+  font-weight:bold;
+
+}
+
+.checkout{
+
+  width:100%;
+
+  margin-top:18px;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:10px;
+
+  background:var(--green);
+
+  color:white;
+
+  font-size:17px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+.empty{
+
+  text-align:center;
+
+  color:var(--muted);
+
+  padding:50px 10px;
+
+}
+
+.badge{
+
+  display:inline-block;
+
+  background:#e53935;
+
+  color:white;
+
+  min-width:22px;
+
+  height:22px;
+
+  border-radius:20px;
+
+  text-align:center;
+
+  line-height:22px;
+
+  font-size:13px;
+
+  margin-left:5px;
+
+}
+
+footer{
+
+  text-align:center;
+
+  padding:30px;
+
+  color:var(--muted);
+
+}
+
+@media(max-width:600px){
+
+  .header-inner{
+
+    gap:10px;
+
+  }
+
+  .logo{
+
+    font-size:20px;
+
+  }
+
+}
+
 </style>
+
 </head>
+
 <body>
-<div class="wrap">
-<header class="top">
-<div class="logo"><div class="mark">🛒</div><div><h1>SmartBasket</h1><small>Find the smarter way to shop.</small></div></div>
-<div class="nav"><button class="on" onclick="tab('shop',this)">Shop</button><button onclick="tab('compare',this)">Compare</button><button onclick="tab('data',this)">Data</button></div>
+
+<header>
+
+  <div class="header-inner">
+
+    <div class="logo">
+
+      <span class="logo-icon">🛒</span>
+
+      SmartBasket
+
+    </div>
+
+    <button class="cart-button" onclick="toggleCart()">
+
+      Basket <span class="badge" id="cartCount">0</span>
+
+    </button>
+
+  </div>
+
 </header>
 
-<section id="shop">
-<div class="hero"><h2>Pay less for your weekly shop.</h2><p>Paste your shopping list. SmartBasket compares products, loyalty prices, pack sizes and supermarkets, then finds the cheapest practical basket — not just the cheapest supermarket.</p></div>
-<div class="grid">
-<div class="card">
-<h3>Your shopping list</h3>
-<textarea id="list" placeholder="Chicken breast&#10;Eggs&#10;Greek yoghurt&#10;Rice&#10;Bananas&#10;Milk&#10;Bread"></textarea>
-<div class="controls"><label>Budget £ <input id="budget" type="number" value="80"></label><label>Max stores <select id="maxstores"><option>1</option><option selected>2</option><option>3</option></select></label></div>
-<div class="controls"><button class="primary" onclick="analyse()">Find my best basket →</button><button class="soft" onclick="demo()">Load demo shop</button></div>
-<div class="note">Trial mode: included prices are prototype data and are not presented as live prices.</div>
-</div>
-<div class="card"><h3>SmartBasket rules</h3>
-<div class="row"><div><b>Exact match</b><div class="muted">Prefer the requested product.</div></div><span class="badge">HIGH</span></div>
-<div class="row"><div><b>Equivalent match</b><div class="muted">Find acceptable alternatives.</div></div><span class="badge">SMART</span></div>
-<div class="row"><div><b>Unit pricing</b><div class="muted">Normalise pack sizes before comparing.</div></div><span class="badge">£/UNIT</span></div>
-<div class="row"><div><b>Practicality</b><div class="muted">More stores are only useful when savings justify them.</div></div><span class="badge">REAL LIFE</span></div>
-</div>
-</div>
-<div id="results" class="result hidden"></div>
+<section class="hero">
+
+  <h1>The smarter way to shop.</h1>
+
+  <p>
+
+    Build your basket, keep track of your spending and shop smarter with SmartBasket.
+
+  </p>
+
 </section>
 
-<section id="compare" class="hidden"><div class="hero"><h2>Basket comparison</h2><p>See the cheapest one-store and multi-store options side by side.</p></div><div id="compareContent" class="card">Run a basket analysis first.</div></section>
+<main class="container">
 
-<section id="data" class="hidden"><div class="hero"><h2>Transparent product data</h2><p>Every comparison should show the product, pack size, price, store and freshness of the source.</p></div><div class="card"><table><thead><tr><th>Product</th><th>Store</th><th>Pack</th><th>Price</th><th>Unit</th><th>Checked</th><th>Source</th></tr></thead><tbody id="tbody"></tbody></table></div></section>
+<div class="controls">
+
+<input
+
+class="search"
+
+id="searchInput"
+
+placeholder="Search products..."
+
+oninput="filterProducts()"
+
+>
+
+<select id="categoryFilter" onchange="filterProducts()">
+
+<option value="all">All categories</option>
+
+<option value="Fruit">Fruit</option>
+
+<option value="Vegetables">Vegetables</option>
+
+<option value="Bakery">Bakery</option>
+
+<option value="Dairy">Dairy</option>
+
+<option value="Meat">Meat</option>
+
+</select>
+
 </div>
 
+<div class="section-title">
+
+<h2>Popular products</h2>
+
+<span id="productCount"></span>
+
+</div>
+
+<div class="product-grid" id="productGrid"></div>
+
+</main>
+
+<!-- SHOPPING CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+
+<h2>Your Basket</h2>
+
+<button class="close" onclick="toggleCart()">×</button>
+
+</div>
+
+<div id="cartItems"></div>
+
+<div class="cart-total">
+
+<div class="total-row">
+
+<span>Total</span>
+
+<span id="cartTotal">£0.00</span>
+
+</div>
+
+<button class="checkout" onclick="checkout()">
+
+Checkout
+
+</button>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 SmartBasket · Shop smarter.
+
+</footer>
+
 <script>
-const P=[
-['Chicken breast','Tesco','British Chicken Breast','1kg',8.50,7.50,'kg'],['Chicken breast','Sainsbury’s','Chicken Breast Fillets','1kg',9,8,'kg'],['Chicken breast','Aldi','Ashfield Chicken Breast','1kg',7.99,null,'kg'],['Chicken breast','Lidl','Chicken Breast','1kg',7.99,null,'kg'],
-['Eggs','Tesco','Free Range Eggs','12 pack',3.2,2.8,'12'],['Eggs','Sainsbury’s','Free Range Eggs','12 pack',3.3,2.9,'12'],['Eggs','Aldi','British Free Range Eggs','12 pack',2.49,null,'12'],['Eggs','Lidl','Free Range Eggs','12 pack',2.49,null,'12'],
-['Greek yoghurt','Tesco','Greek Style Yoghurt','500g',1.8,null,'kg'],['Greek yoghurt','Sainsbury’s','Greek Style Yoghurt','500g',1.85,null,'kg'],['Greek yoghurt','Aldi','Greek Style Yoghurt','500g',1.49,null,'kg'],
-['Rice','Tesco','Easy Cook Long Grain Rice','1kg',1.8,null,'kg'],['Rice','Sainsbury’s','Long Grain Rice','1kg',1.85,null,'kg'],['Rice','Aldi','Long Grain Rice','1kg',1.55,null,'kg'],['Rice','Lidl','Long Grain Rice','1kg',1.49,null,'kg'],
-['Bananas','Tesco','Bananas','1kg',1.2,null,'kg'],['Bananas','Sainsbury’s','Bananas','1kg',1.2,null,'kg'],['Bananas','Aldi','Bananas','1kg',1.05,null,'kg'],['Bananas','Lidl','Bananas','1kg',1.05,null,'kg'],
-['Milk','Tesco','Whole Milk','2L',1.65,null,'L'],['Milk','Sainsbury’s','Whole Milk','2L',1.65,null,'L'],['Milk','Aldi','Whole Milk','2L',1.55,null,'L'],['Milk','Lidl','Whole Milk','2L',1.55,null,'L'],
-['Bread','Tesco','White Bread','800g',1.45,null,'kg'],['Bread','Aldi','White Bread','800g',1.09,null,'kg'],['Bread','Lidl','White Bread','800g',1.09,null,'kg']
+
+const products = [
+
+{
+
+id:1,
+
+name:"Bananas",
+
+price:1.20,
+
+category:"Fruit",
+
+image:"🍌"
+
+},
+
+{
+
+id:2,
+
+name:"Red Apples",
+
+price:2.00,
+
+category:"Fruit",
+
+image:"🍎"
+
+},
+
+{
+
+id:3,
+
+name:"Strawberries",
+
+price:2.50,
+
+category:"Fruit",
+
+image:"🍓"
+
+},
+
+{
+
+id:4,
+
+name:"Carrots",
+
+price:0.90,
+
+category:"Vegetables",
+
+image:"🥕"
+
+},
+
+{
+
+id:5,
+
+name:"Broccoli",
+
+price:1.10,
+
+category:"Vegetables",
+
+image:"🥦"
+
+},
+
+{
+
+id:6,
+
+name:"Sliced Bread",
+
+price:1.50,
+
+category:"Bakery",
+
+image:"🍞"
+
+},
+
+{
+
+id:7,
+
+name:"Milk",
+
+price:1.45,
+
+category:"Dairy",
+
+image:"🥛"
+
+},
+
+{
+
+id:8,
+
+name:"Cheddar Cheese",
+
+price:2.75,
+
+category:"Dairy",
+
+image:"🧀"
+
+},
+
+{
+
+id:9,
+
+name:"Chicken Breast",
+
+price:4.50,
+
+category:"Meat",
+
+image:"🍗"
+
+},
+
+{
+
+id:10,
+
+name:"Eggs",
+
+price:2.20,
+
+category:"Dairy",
+
+image:"🥚"
+
+}
+
 ];
-const aliases={'chicken':'chicken breast','chicken breast':'chicken breast','chicken breasts':'chicken breast','yogurt':'greek yoghurt','greek yogurt':'greek yoghurt','greek yoghurt':'greek yoghurt','egg':'eggs','eggs':'eggs','banana':'bananas','bananas':'bananas','milk':'milk','bread':'bread','rice':'rice'};
-function norm(s){s=String(s).toLowerCase().trim().replace(/\s*x\s*\d+\s*$/,'').trim().replace(/^\d+\s*x\s*/,'').trim();return aliases[s]||s}
-function money(n){return '£'+Number(n).toFixed(2)}
-function effective(p){return p[5]??p[4]}
-function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
 
-function analyse(){
-const items=document.getElementById('list').value.split(/\r?\n/).map(norm).filter(Boolean),max=+document.getElementById('maxstores').value,budget=+document.getElementById('budget').value||Infinity,chosen=[],unknown=[];
-for(const item of items){const opts=P.filter(x=>x[0]===item);if(!opts.length){unknown.push(item);continue}chosen.push({item,p:opts.reduce((a,b)=>effective(a)<effective(b)?a:b)})}
-const out=document.getElementById('results');
-if(!chosen.length){out.innerHTML='<div class="note">Please enter at least one recognised product, one item per line.</div>';out.classList.remove('hidden');return}
-const stores=[...new Set(P.map(x=>x[1]))];
-const single=stores.map(s=>({s,total:chosen.reduce((t,x)=>{const o=P.find(p=>p[0]===x.item&&p[1]===s);return t+(o?effective(o):999)},0)})).sort((a,b)=>a.total-b.total);
-let combos=[];
-function subsets(arr,k,start=0,p=[]){if(p.length===k){combos.push([...p]);return}for(let i=start;i<arr.length;i++)subsets(arr,k,i+1,[...p,arr[i]])}
-for(let k=1;k<=Math.min(max,stores.length);k++)subsets(stores,k);
-const plans=combos.map(ss=>{let total=0,lines=[];for(const x of chosen){const opts=ss.map(s=>P.find(p=>p[0]===x.item&&p[1]===s)).filter(Boolean);if(!opts.length)continue;const b=opts.reduce((a,b)=>effective(a)<effective(b)?a:b);total+=effective(b);lines.push({item:x.item,p:b})}return{stores:ss,total,lines}}).sort((a,b)=>a.total-b.total);
-render({chosen,single,plans,best:plans[0],one:single[0],budget,unknown})
+let cart = JSON.parse(localStorage.getItem("smartbasketCart")) || [];
+
+/* DISPLAY PRODUCTS */
+
+function displayProducts(productList){
+
+const grid = document.getElementById("productGrid");
+
+grid.innerHTML = "";
+
+productList.forEach(product => {
+
+grid.innerHTML += `
+
+<div class="product">
+
+<div class="product-image">
+
+${product.image}
+
+</div>
+
+<div class="category">
+
+${product.category}
+
+</div>
+
+<h3>${product.name}</h3>
+
+<div class="price">
+
+£${product.price.toFixed(2)}
+
+</div>
+
+<button
+
+class="add-button"
+
+onclick="addToCart(${product.id})"
+
+>
+
+Add to basket
+
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("productCount").textContent =
+
+productList.length + " products";
+
 }
 
-function render(r){
-const practical=r.best,travelPenalty=Math.max(0,(practical.stores.length-1)*1.5),practicalCost=practical.total+travelPenalty,saving=Math.max(0,r.one.total-practicalCost),out=document.getElementById('results');
-out.innerHTML=`<div class="winner"><div>BEST PRACTICAL BASKET</div><div class="big">${money(practicalCost)}</div><div class="save">Potential saving vs cheapest one-store shop: ${money(saving)}</div><div style="margin-top:10px">${practical.stores.join(' + ')} · includes £${travelPenalty.toFixed(2)} practical trip allowance</div></div>
-<div class="kpis"><div class="kpi"><small>Cheapest one store</small><strong>${money(r.one.total)}</strong></div><div class="kpi"><small>Best split</small><strong>${money(practical.total)}</strong></div><div class="kpi"><small>Stores</small><strong>${practical.stores.length}</strong></div><div class="kpi"><small>Budget left</small><strong>${money(Math.max(0,r.budget-practicalCost))}</strong></div></div>
-<div class="grid"><div class="card"><h3>What to buy</h3>${practical.lines.map(x=>`<div class="row"><div><b>${cap(x.item)}</b><div class="muted">${x.p[2]} · ${x.p[3]} · ${x.p[1]}${x.p[5]!=null?' · loyalty price':''}</div></div><div class="price">${money(effective(x.p))}</div></div>`).join('')}</div>
-<div class="card"><h3>Store options</h3><div class="storegrid">${r.single.map((s,i)=>`<div class="store ${i===0?'best':''}"><h4>${s.s}</h4><b>${money(s.total)}</b><span class="muted">${i===0?'Cheapest one-stop shop':'Compared basket'}</span></div>`).join('')}</div><p class="muted">Prototype practicality allowance is illustrative. A production version should use location, delivery fees, minimums and travel time.</p></div></div>
-${r.unknown.length?`<div class="note">Could not confidently match: ${r.unknown.map(cap).join(', ')}. SmartBasket should never invent a product match.</div>`:''}`;
-document.getElementById('compareContent').innerHTML=`<h3>Best routes for this basket</h3>${r.plans.slice(0,8).map((p,i)=>`<div class="row"><div><b>${i===0?'🏆 ':''}${p.stores.join(' + ')}</b><div class="muted">${p.lines.map(x=>x.p[2]).join(' · ')}</div></div><div class="price">${money(p.total)}</div></div>`).join('')}`;
-out.classList.remove('hidden')
+/* ADD TO CART */
+
+function addToCart(id){
+
+const product = products.find(p => p.id === id);
+
+const existingItem = cart.find(item => item.id === id);
+
+if(existingItem){
+
+existingItem.quantity++;
+
 }
 
-function demo(){document.getElementById('list').value=['Chicken breast','Eggs','Greek yoghurt','Rice','Bananas','Milk','Bread'].join('\n');analyse()}
-function tab(id,btn){['shop','compare','data'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));btn.classList.add('on')}
-document.getElementById('tbody').innerHTML=P.map(p=>`<tr><td>${p[2]}</td><td>${p[1]}</td><td>${p[3]}</td><td>${money(p[4])}${p[5]!=null?' / '+money(p[5])+' loyalty':''}</td><td>${p[6]}</td><td>31 Aug 2026</td><td>Prototype seed data</td></tr>`).join('');
-demo();
+else{
+
+cart.push({
+
+...product,
+
+quantity:1
+
+});
+
+}
+
+saveCart();
+
+updateCart();
+
+}
+
+/* UPDATE CART */
+
+function updateCart(){
+
+const cartItems = document.getElementById("cartItems");
+
+const cartCount = document.getElementById("cartCount");
+
+const cartTotal = document.getElementById("cartTotal");
+
+if(cart.length === 0){
+
+cartItems.innerHTML = `
+
+<div class="empty">
+
+<h3>Your basket is empty</h3>
+
+<p>Start adding some products!</p>
+
+</div>
+
+`;
+
+}
+
+else{
+
+cartItems.innerHTML = "";
+
+cart.forEach(item => {
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<div class="cart-item-info">
+
+<strong>${item.image} ${item.name}</strong>
+
+<div>
+
+£${item.price.toFixed(2)}
+
+</div>
+
+<div class="quantity-controls">
+
+<button
+
+class="qty-btn"
+
+onclick="changeQuantity(${item.id},-1)"
+
+>
+
+−
+
+</button>
+
+<span>${item.quantity}</span>
+
+<button
+
+class="qty-btn"
+
+onclick="changeQuantity(${item.id},1)"
+
+>
+
++
+
+</button>
+
+</div>
+
+<button
+
+class="remove"
+
+onclick="removeItem(${item.id})"
+
+>
+
+Remove
+
+</button>
+
+</div>
+
+<div>
+
+<strong>
+
+£${(item.price * item.quantity).toFixed(2)}
+
+</strong>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+const totalItems = cart.reduce(
+
+(total,item) => total + item.quantity,
+
+0
+
+);
+
+const totalPrice = cart.reduce(
+
+(total,item) =>
+
+total + (item.price * item.quantity),
+
+0
+
+);
+
+cartCount.textContent = totalItems;
+
+cartTotal.textContent =
+
+"£" + totalPrice.toFixed(2);
+
+}
+
+/* CHANGE QUANTITY */
+
+function changeQuantity(id, amount){
+
+const item = cart.find(item => item.id === id);
+
+item.quantity += amount;
+
+if(item.quantity <= 0){
+
+cart = cart.filter(item => item.id !== id);
+
+}
+
+saveCart();
+
+updateCart();
+
+}
+
+/* REMOVE ITEM */
+
+function removeItem(id){
+
+cart = cart.filter(item => item.id !== id);
+
+saveCart();
+
+updateCart();
+
+}
+
+/* SAVE BASKET */
+
+function saveCart(){
+
+localStorage.setItem(
+
+"smartbasketCart",
+
+JSON.stringify(cart)
+
+);
+
+}
+
+/* OPEN / CLOSE CART */
+
+function toggleCart(){
+
+document
+
+.getElementById("cartPanel")
+
+.classList
+
+.toggle("open");
+
+}
+
+/* SEARCH + FILTER */
+
+function filterProducts(){
+
+const search =
+
+document
+
+.getElementById("searchInput")
+
+.value
+
+.toLowerCase();
+
+const category =
+
+document
+
+.getElementById("categoryFilter")
+
+.value;
+
+const filtered = products.filter(product => {
+
+const matchesSearch =
+
+product.name
+
+.toLowerCase()
+
+.includes(search);
+
+const matchesCategory =
+
+category === "all"
+
+||
+
+product.category === category;
+
+return matchesSearch && matchesCategory;
+
+});
+
+displayProducts(filtered);
+
+}
+
+/* CHECKOUT */
+
+function checkout(){
+
+if(cart.length === 0){
+
+alert("Your basket is empty!");
+
+return;
+
+}
+
+const total = cart.reduce(
+
+(total,item) =>
+
+total + (item.price * item.quantity),
+
+0
+
+);
+
+alert(
+
+"Thanks for shopping with SmartBasket!\\n\\nYour total is £"
+
++
+
+total.toFixed(2)
+
++
+
+"\\n\\nCheckout functionality coming soon!"
+
+);
+
+}
+
+/* INITIAL LOAD */
+
+displayProducts(products);
+
+updateCart();
+
 </script>
+
 </body>
+
 </html>
